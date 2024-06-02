@@ -261,10 +261,199 @@ public:
 ### Queue
 #### queue using array
 ##### linear queue
+```cpp
+
+struct Queue{ // linear queue using array
+    int queue[100], SIZE = 100, front = -1, rear = -1;
+
+    void enqueue(int val){
+        if(isFull()){
+            cout << "OVERFLOW, the queue is full" << endl;
+        }
+        else{
+            queue[++rear] = val;
+            if(front == -1)
+                front = 0;
+        }
+    }
+
+    void dequeue(){
+        if(isEmpty()){
+            cout << "UNDERFLOW, the queue is empty" << endl;
+        }
+        else if(front == rear){
+            front = rear = -1;
+        }
+        else{
+            front++;
+        }
+    }
+
+    int get_front(){
+        if(isEmpty()){
+            cout << "the queue is empty" << endl;
+            return -1;
+        }
+        else{
+           return queue[front];
+        }
+    }
+
+    void display_queue(){
+        if(isEmpty()){
+            cout << "the queue is empty" << endl;
+        }
+        else{
+            for(int i = front; i <= rear; i++){
+                cout << queue[i] << " ";
+            }
+            cout << endl;
+        }
+    }
+    bool isEmpty(){
+        return (front == -1 && rear == -1);
+    }
+
+    bool isFull(){
+        return (rear == SIZE - 1);
+    }
+};
+```
 
 ##### circular queue
+```cpp
+struct Queue{ //circular queue using array
+private:
+    int queue[100], SIZE = 100, front = -1, rear = -1;
+public:
+    void enqueue(int val){
+        if(isFull()){
+            cout << "the queue is full" << endl;
+        }
+        else if(isEmpty()){
+            rear = front = 0;
+            queue[rear] = val;
+        }
+        else{
+            rear = (rear + 1) % SIZE;
+            queue[rear] = val;
+        }
+    };
+
+    void dequeue(){
+        if(isEmpty()){
+            cout << "the queue is empty" << endl;
+        }
+        else if(front == rear){ // have one element
+            front = rear = -1;
+        }
+        else{
+            front = (front + 1) % SIZE;
+        }
+    };
+    void display_queue(){
+        if(isEmpty()){
+            cout << "the queue is empty!" << endl;
+        }
+        else {
+            int i = front, j = rear;
+
+            if((rear + 1) % SIZE == front){
+                cout << queue[front] << " ";
+                i++; 
+                i %= SIZE;
+            }
+            while((i % SIZE) != ((j + 1) % SIZE)){
+                cout << queue[i] << " ";
+                i++;
+                i %= SIZE;
+            }
+            cout << endl;
+        }
+    };
+    int get_front(){
+        if(isEmpty()){
+            cout << "queue is empty!" << endl;
+            return -1;
+        }
+        else{
+            return queue[front];
+        }
+    }
+    bool isEmpty(){
+        return (front == -1);
+    }
+    bool isFull(){
+        return (front == (rear + 1) % SIZE);
+        // (front = rear + 1) || (front == 0 && rear == size - 1). 
+    }
+};
+```
 
 #### queue using linked list
+- Node implementation
+```cpp
+struct Node{
+    int data;
+    Node *next;
+    Node(int x) : data(x), next(nullptr) {}
+};
+```
+
+- Queue implementation
+```cpp
+struct Queue{ //queue using linked list
+private:
+    Node *front = NULL, *rear = NULL;
+    
+public:
+    void enqueue(int val){
+        Node *newNode = new Node(val);
+        if(isEmpty()){
+            front = rear = newNode;
+        }
+        else{
+            rear->next = newNode;
+            rear = newNode;
+        }
+    };
+    void dequeue(){
+        if(isEmpty()){
+            cout << "queue is empty" << endl;
+        }
+        else if(front == rear){
+            delete front;
+            front = rear = NULL;
+        }
+        else{
+            
+            Node *temp = front;
+            front = front->next;
+            delete temp;
+        }
+    };
+    void display_queue(){
+        Node *curr = front;
+        while(curr != NULL){
+            cout << curr->data << " ";
+            curr = curr->next;
+        }
+        cout << endl;
+    };
+    int get_front(){
+        if(isEmpty()){
+            cout << "queue is empty" << endl;
+            return -1;
+        }
+        else{
+            return front->data;
+        }
+    }
+    bool isEmpty(){
+        return (front == NULL);
+    }
+};
+```
 <hr/>
 
 ### Linear Priority Queue
