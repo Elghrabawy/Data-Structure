@@ -289,11 +289,9 @@ public:
 
 ### insertion sort
 - Time Complexity
->- Best Case : &Omega;(n)
-> <br>
->- Worst Case : O(n<sup>2</sup>)
-> <br>
->- Average Case : O(n<sup>2</sup>)
+    - Best Case : O(n)
+    - Worst Case : O(n<sup>2</sup>)
+    - Average Case : O(n<sup>2</sup>)
 
 - Main Idea
 ```
@@ -340,11 +338,10 @@ void insertion_sort_2(int a[], int n){
 
 ### selection sort
 - Time Complexity
->- Best Case : &Omega;(n)
-> <br>
->- Worst Case : O(n<sup>2</sup>)
-> <br>
->- Average Case : O(n<sup>2</sup>)
+    - Best Case : O(n<sup>2</sup>)
+    - Worst Case : O(n<sup>2</sup>)
+    - Average Case : O(n<sup>2</sup>)
+
 
 - Main idea
 ```
