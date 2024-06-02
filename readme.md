@@ -463,7 +463,50 @@ public:
 <hr/>
 
 ### Linear Priority Queue
+- Node implementation
+```cpp
+struct Node{
+    int data, priority; 
+    Node *next;
+    Node(int val) : data(val), priority(0), next(NULL) {}
+    Node(int val, int p) : data(val), priority(p), next(NULL) {}
+};
+```
 
+- Priority Queue implementation
+```cpp
+struct PriorityQueue{
+    Node *first = NULL, *last = NULL;
+
+    void insert(int val, int per){
+        Node *newNode = new Node(val);
+        if(first == NULL || per < first->priority){
+            newNode->next = first;
+            first = newNode;
+        }
+        else{
+            Node *cur = first;
+            while(cur != NULL && cur->next->priority <= per){
+                cur = cur->next;
+            }
+
+            newNode->next = cur->next;
+            cur = newNode;
+        }
+    }
+
+    void del(){
+        if(first == NULL){
+            cout << "UNDERFLOW.. Queue is empty\n";
+        }
+        else{
+            Node *tmp = first;
+            first = first->next;
+            delete tmp;
+        }
+    }
+};
+```
 <hr/>
 
 
@@ -629,6 +672,39 @@ private:
         if(cur->left == NULL && cur->right == NULL) return 1;
         return (_count_leafs(cur->left) + _count_leafs(cur->right));
     }
+    TreeNode *min_node(TreeNode *cur){
+        if(cur == NULL || cur->left == NULL) return cur;
+        else return min_node(cur->left);
+    }
+    TreeNode *_delete(int val, TreeNode *cur){
+        if(cur == NULL) return NULL;
+        if(cur->data > val){
+            cur->left = _delete(val, cur->left);
+        }
+        else if(cur->data < val){
+            cur->right = _delete(val, cur->right);
+        }
+        else{
+            TreeNode *tmp = cur;
+
+            if(cur->left == NULL && cur->right == NULL){  // case 1: no child
+                cur = NULL;
+            }
+            else if(cur->left == NULL){                    // case 2: has right child only
+                cur = cur->right;
+            }
+            else if(cur->right == NULL){                   // case 3: has left child only
+                cur = cur->left;
+            }
+            else{                                           // case 4: has 2 children
+                TreeNode *mn = min_node(cur->right);
+                cur->data = mn->data;
+                cur->right = _delete(cur->data, cur->right);
+            }
+            delete tmp;
+        }
+        return cur;
+    }
     void _inOrder(TreeNode *cur){
         if(cur == NULL) return;
 
@@ -671,6 +747,9 @@ public:
     }
     int count_leafs(){
         return _count_leafs(root);
+    }
+    void delete_node(int val){
+        _delete(val, root);
     }
     void inOrder(){
         _inOrder(root);
