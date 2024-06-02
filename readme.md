@@ -566,6 +566,41 @@ void selection_sort(int a[], int n){
 ```
 
 ### bubble sort
+- Time Complexity
+    - Best Case : O(n)
+    - Worst Case : O(n<sup>2</sup>)
+    - Average Case : O(n<sup>2</sup>)
+
+- Main Idea
+```
+traverse from left and sort every adjacent elements
+1st iteration -> 1st largest element moved to rightmost end
+2nd iteration -> 2nd largest element moved to before 1st largest.
+3rd .. 4th .. and so on
+```
+
+- Steps
+```
+1. compare the (j)th with (j+1)th element ans sort them
+2. repeat step 1 for all elements until there are no more items to compare
+``` 
+- Code
+```cpp
+void bubble_sort(int a[], int n){
+    bool swapped = false;
+    for(int i = 1; i < n - 1; i++){
+        swapped = false;
+        for(int j = 0; j < n - i - 1; j++){
+            if(a[j] > a[j + 1]){
+                swap(a[j], a[j + 1]);
+                swapped = true;
+            }
+
+        }
+        if(swapped == false) break;
+    }
+}
+```
 ### quick sort
 - make a pivot function (2 ways implemented)
 ```cpp
