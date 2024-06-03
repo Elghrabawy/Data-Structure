@@ -5,15 +5,15 @@
     - [Singly Linked List](#singly-linked-list)
     - [Doubly Linked List](#doubly-linked-list)
   - [Stack](#stack)
-    - [stack using array](#stack-using-array)
-    - [stack using linked list](#stack-using-linked-list)
+    - [Stack using Array](#stack-using-array)
+    - [Stack using Linked List](#stack-using-linked-list)
   - [Queue](#queue)
     - [queue using array](#queue-using-array)
-      - [linear queue](#linear-queue)
-      - [circular queue](#circular-queue)
-    - [queue using linked list](#queue-using-linked-list)
+      - [Linear Queue](#linear-queue)
+      - [Circular Queue](#circular-queue)
+    - [Queue using Linked List](#queue-using-linked-list)
   - [Linear Priority Queue](#linear-priority-queue)
-- [non-linear data structures](#non-linear-data-structures)
+- [Non-Linear Data Structures](#non-linear-data-structures)
   - [binary tree](#binary-tree)
     - [binary tree using pointers](#binary-tree-using-pointers)
     - [binary tree using array](#binary-tree-using-array)
@@ -38,7 +38,7 @@
 </center>
 
 ### Linked list
-#### Singly Linked List
+#### [Singly Linked List](LinkedList/linked_list.cpp)
 - Node implementation
 ```cpp
 struct Node{
@@ -158,7 +158,7 @@ struct LinkedList{
 
 ### Stack
 
-#### stack using array
+#### [Stack using Array](LinkedList/Stack/stack_array.cpp)
 ```cpp
 struct Stack{ // array
 private:
@@ -207,7 +207,7 @@ public:
 };
 ```
 
-#### stack using linked list
+#### [Stack using Linked List](LinkedList/Stack/stack_linked_list.cpp)
 - Node implementation
 ```cpp
 struct Node{
@@ -266,7 +266,7 @@ public:
 
 ### Queue
 #### queue using array
-##### linear queue
+##### [Linear Queue](LinkedList/Queue/linear-queue-array.cpp)
 ```cpp
 
 struct Queue{ // linear queue using array
@@ -326,7 +326,7 @@ struct Queue{ // linear queue using array
 };
 ```
 
-##### circular queue
+##### [Circular Queue](LinkedList/Queue/circular-queue-array.cpp)
 ```cpp
 struct Queue{ //circular queue using array
 private:
@@ -396,7 +396,7 @@ public:
 };
 ```
 
-#### queue using linked list
+#### [Queue using Linked List](LinkedList/Queue/queue-linked-list.cpp)
 - Node implementation
 ```cpp
 struct Node{
@@ -462,7 +462,7 @@ public:
 ```
 <hr/>
 
-### Linear Priority Queue
+### [Linear Priority Queue](LinkedList/Queue/linear_priority_queue.cpp)
 - Node implementation
 ```cpp
 struct Node{
@@ -513,12 +513,12 @@ struct PriorityQueue{
 
 <center>
 
-## non-linear data structures
+## Non-Linear Data Structures
 
 </center>
 
 ### binary tree
-#### binary tree using pointers
+#### [binary tree using pointers](tree/binary_tree_pointers.cpp)
 - Tree Node implementation
 ```cpp
 struct TreeNode{
@@ -558,7 +558,7 @@ struct BinaryTree{
     };
 };
 ```
-#### binary tree using array
+#### [binary tree using array](tree/binary_tree_array.cpp)
 ```cpp
 struct BinaryTree{
     char tree[100];
@@ -616,7 +616,7 @@ struct BinaryTree{
     }
 };
 ```
-#### binary search tree
+#### [binary search tree](tree/binary_search_tree.cpp)
 - Tree Node implementation
 ```cpp
 struct TreeNode{
@@ -774,7 +774,7 @@ public:
 
 </center>
 
-### insertion sort
+### [insertion sort](sorting-algorithms/insertion-sort.cpp)
 - Time Complexity
     - Best Case : O(n)
     - Worst Case : O(n<sup>2</sup>)
@@ -823,7 +823,7 @@ void insertion_sort_2(int a[], int n){
 }
 ```
 
-### selection sort
+### [selection sort](sorting-algorithms/selection-sort.cpp)
 - Time Complexity
     - Best Case : O(n<sup>2</sup>)
     - Worst Case : O(n<sup>2</sup>)
@@ -863,7 +863,7 @@ void selection_sort(int a[], int n){
 }
 ```
 
-### bubble sort
+### [bubble sort](sorting-algorithms/selection-sort.cpp)
 - Time Complexity
     - Best Case : O(n)
     - Worst Case : O(n<sup>2</sup>)
@@ -899,7 +899,7 @@ void bubble_sort(int a[], int n){
     }
 }
 ```
-### quick sort
+### [quick sort](sorting-algorithms/quick-sort.cpp)
 - make a pivot function (2 ways implemented)
 ```cpp
 int partition_1(int a[], int l, int r){
@@ -947,8 +947,8 @@ void quick_sort(int a[], int n){
 }
 ```
 
-### merge sort
-### counting sort
+### [merge sort](sorting-algorithms/merge-sort.cpp)
+### [counting sort](sorting-algorithms/counting-sort.cpp)
 
 <hr/>
 
@@ -959,7 +959,7 @@ void quick_sort(int a[], int n){
 
 </center>
 
-### binary search
+### [binary search](searching-algorithms/binary_search.cpp)
 ```cpp
 int binary_search(int a[], int n, int key){
     int l = 0, r  = n - 1;
