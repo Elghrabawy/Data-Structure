@@ -29,7 +29,7 @@ struct LinkedList{
     void insert_front(int val){ // backward
         Node *newNode = new Node(val);
         if(head == NULL){
-            head = newNode;
+            head = tail = newNode;
         }
         else{
             newNode->next = head;
